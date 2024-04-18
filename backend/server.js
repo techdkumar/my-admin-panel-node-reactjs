@@ -1,16 +1,12 @@
 const express = require('express');
-
 var con = require('./db/connection.js'); // db is pool
-
 const cors = require('cors');
 
 /* import cookieParser from 'cookie-parser';
 
 import jwt from 'cookie-parser'; */
 
-
 const app = express();
-
 const PORT = process.env.PORT || 8881;
 
 app.use(cors());
@@ -18,7 +14,6 @@ app.use(express.json());
 
 //Get all users data
 app.get('/users', (req, res)=> {
-
 	const sql = "select * from users";
 	con.query(sql, (err, data)=> {
 	if(err) return res.json(err);
@@ -26,7 +21,6 @@ app.get('/users', (req, res)=> {
 	})
 
 })
-
 
 
 //Get a user by ID
@@ -44,11 +38,9 @@ app.get('/admin/user/:id', (req, res) => {
     });
 });
 
-
 //Add User
 app.post('/admin/create', (req, res)=> {
     const request = req.body;
-
     const bcrypt = require('bcrypt');
 	const saltRounds = 10;
 
@@ -83,7 +75,6 @@ app.post('/admin/create', (req, res)=> {
 
 })
 
-
 //Update user
 /* app.put('/admin/update/:id', (req, res) => {
     const request = req.body;
@@ -102,17 +93,13 @@ app.post('/admin/create', (req, res)=> {
     });
 });
  */
- 
- 
- 
-//Update user
+  
 
 /* for file upload  */
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 /* for file upload end */
-
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -124,7 +111,6 @@ const storage = multer.diskStorage({
         cb(null, timestamp + '-' + file.originalname); // Prefix filename with timestamp
     }
 });
-
 const upload = multer({ storage: storage });
 
 app.put('/admin/update/:id', upload.single('profile_image'), (req, res) => {
@@ -174,7 +160,6 @@ app.delete('/admin/delete/:id', (req, res) => {
         }
     });
 });
- 
  
 // login api
 app.post('/login', (req, res) => {
