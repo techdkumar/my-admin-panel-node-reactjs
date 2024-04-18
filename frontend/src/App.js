@@ -5,8 +5,6 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, Navigate, Redirect, Switch} from "react-router-dom";
 
 
-
-
 import "./App.css"; //Assuming you have some custom styles
 
 import AdminLogin from "./pages/auth/AdminLogin";
@@ -14,11 +12,6 @@ import Dashboard from './layout/Dashboard';
 import Home from './pages/Home';
 import Create  from "./pages/Create";
 import Update  from "./pages/Update";
-
-
-// Containers
-//const AdminLayout = React.lazy(() => import('./layout/AdminLayout'))
-
 
 function DhananjayApp() {
 	return (
@@ -35,10 +28,6 @@ function DhananjayApp() {
         </Routes>
       </div>
     </Router> 
-	/*  <div className="App">
-      <Dashboard />
-    </div>
-		 */
 		
 	);
 }
